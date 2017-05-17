@@ -1,0 +1,34 @@
+#app{
+    display: block;
+    float: none;
+    margin: auto;
+}
+
+#searchBtn{
+    display: block;
+    margin: auto;
+    max-width: 80%;
+}
+
+#app-viewer img{
+    display: block;
+    margin-top: 20px;
+    box-shadow: #ccc 0 0 1px;
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.image-card{
+    width: 23%;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+    height: 120px;
+    box-shadow: #000 0 0 1px;
+}
+
+.results-box{
+    margin-top: 10px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
