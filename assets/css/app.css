@@ -20,7 +20,7 @@
 }
 
 .image-card{
-    width: 23%;
+    width: 22.5%;
     display: inline-block;
     margin: 5px;
     cursor: pointer;
@@ -35,9 +35,13 @@
 }
 
 .first-search{
-    margin-top: 50px;
+    margin: 50px auto 0 auto;
     width: 80%;
-    max-width: 500px; 
-    margin: auto;
+    max-width: 500px;
     display: block;
+}
+
+.no-results{
+    text-align: center;
+    margin-top: 20px;
 }

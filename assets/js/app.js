@@ -1,4 +1,4 @@
-var apiEndPoint = 'http://api.giphy.com/v1/gifs/search';
+var apiEndPoint = 'https://api.giphy.com/v1/gifs/search';
 var publicKey = 'dc6zaTOxFJmzC';
 
 new Vue({
@@ -6,8 +6,7 @@ new Vue({
     data: {
         query: '',
         results: false,
-        current_gif: false,
-        viewer_element: document.getElementById('app-viewer')
+        current_gif: false
     },
     methods: {
         searchGIFs: function () {
@@ -21,6 +20,7 @@ new Vue({
             })
             .then(function (response) {
                 self.results = response.data.data;
+                self.current_gif = false;
             })
             .catch(function (error) {
                 console.log(error);
