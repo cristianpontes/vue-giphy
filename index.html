@@ -12,17 +12,17 @@
 <body>
 <div id="app" class="col-md-10 col-xs-11">
 
-    <div class="col-xs-12 col-md-6" id="app-viewer">
-        <img :src="current_gif" v-if="current_gif">
-        <h3 v-else>Search for gifs and select one</h3>
+    <div class="col-xs-12 col-md-6" id="app-viewer" v-show="results">
+        <img :src="current_gif" v-if="current_gif" class="center-block"> 
+        <h3 v-else>Select a gif</h3>
     </div>
-    <div class="col-xs-12 col-md-6">
+    <div :class="{'col-xs-12 col-md-6': results, 'first-search': !results}">
         <form class="form-horizontal" v-on:submit.prevent="searchGIFs()">
             <div class="form-group">
                 <h3>Search gifs by key words</h3>
                 <input type="text" class="form-control" placeholder="Key words" v-model="query">
             </div>
-            <button type="submit" class="btn btn-primary" id="searchBtn" >
+            <button type="submit" class="btn btn-primary" id="searchBtn" :disabled="query.trim() == '' ? true : false">
                 Search
             </button>
         </form>
@@ -34,6 +34,7 @@
 
 </div>
 <script src="assets/js/vue.js"></script>
+<script src="assets/js/axios.min.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>

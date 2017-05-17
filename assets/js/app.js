@@ -5,18 +5,26 @@ new Vue({
     el: '#app',
     data: {
         query: '',
-        results: [],
-        current_gif: false
+        results: false,
+        current_gif: false,
+        viewer_element: document.getElementById('app-viewer')
     },
     methods: {
         searchGIFs: function () {
-            var xhr = new XMLHttpRequest();
             var self = this;
-            xhr.open('GET', apiEndPoint + '?q=' + self.query.split(' ').join('+') + '&api_key=' + publicKey);
-            xhr.onload = function () {
-                self.results = JSON.parse(xhr.responseText).data;
-            };
-            xhr.send();
+            axios.get(apiEndPoint, {
+                params: {
+                    api_key: publicKey,
+                    q: self.query.split(' ').join('+'),
+                    limit: 50
+                }
+            })
+            .then(function (response) {
+                self.results = response.data.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         },
         viewGIF: function (gif) {
             this.current_gif = gif.images.original.url;
